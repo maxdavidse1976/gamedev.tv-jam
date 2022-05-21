@@ -23,10 +23,10 @@ public class Player : MonoBehaviour
         direction.x = horizontalInput * speed;
 
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-        direction.y += gravityScale * Time.deltaTime;
 
         if (isGrounded)
         {
+            direction.y = 0;
             canDoubleJump = true;
             if (Input.GetButtonDown("Jump"))
             {
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            direction.y += gravityScale * Time.deltaTime;
             if (canDoubleJump && Input.GetButtonDown("Jump"))
             {
                 direction.y = jumpStrength;
