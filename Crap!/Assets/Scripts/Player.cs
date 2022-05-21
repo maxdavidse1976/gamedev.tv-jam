@@ -5,13 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-    private Vector3 direction;
     [SerializeField] private float speed = 8;
     [SerializeField] private float jumpStrength = 10;
     [SerializeField] private float gravityScale = -20;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool canDoubleJump = true;
+
+    private Vector3 direction;
     void Start()
     {
         
