@@ -5,10 +5,13 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
-
+    [Tooltip("Insert the Text Gameobject you want to show as name")]
     public TMP_Text nameText;
+
+    [Tooltip("Insert the Text Gameobject you want to show as text")]
     public TMP_Text dialogueText;
 
+    [Tooltip("Opening / Closing of the dialogue")]
     public Animator animator;
 
     private Queue<string> sentences;
@@ -19,6 +22,16 @@ public class DialogueManager : MonoBehaviour
     {
         sentences = new Queue<string>();
         player = FindObjectOfType<Player>().GetComponent<Player>();
+    }
+
+    private void Update()
+    {
+        // Used to make the player use the [ENTER] on the keyboard in order to go to the next sentence
+        // and / or close the dialogue when finished
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            DisplayNextSentence();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -35,6 +48,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayNextSentence();
+
+        // Remove the controls of the player body in order to not move
         player.enabled = false;
     }
 
@@ -65,6 +80,8 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+
+        // Give the player back his control over his body
         player.enabled = true;
     }
 }
