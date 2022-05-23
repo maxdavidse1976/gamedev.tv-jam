@@ -22,20 +22,20 @@ public class Environment : MonoBehaviour
 
     void Update()
     {
-        if (player.position.x >= evilBoundary.position.x)
-        {
-            Debug.Log("Changing colors");
-            ChangeColors(amountToChangeColor, false);
-        }
-        else if (player.position.x <= goodBoundary.position.x)
-        {
-            Debug.Log("Changing colors");
-            ChangeColors(amountToChangeColor, true);
-        }
-        if (timer < duration)
-        {
-            timer += Time.deltaTime / duration;
-        }
+        //if (player.position.x >= evilBoundary.position.x)
+        //{
+        //    Debug.Log("Changing colors");
+        //    ChangeColors(amountToChangeColor, false);
+        //}
+        //else if (player.position.x <= goodBoundary.position.x)
+        //{
+        //    Debug.Log("Changing colors");
+        //    ChangeColors(amountToChangeColor, true);
+        //}
+        //if (timer < duration)
+        //{
+        //    timer += Time.deltaTime / duration;
+        //}
     }
 
     private void ChangeColors(float changeBy, bool towardsHeaven)
