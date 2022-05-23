@@ -6,34 +6,24 @@ public class NPC : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    [SerializeField] Player player;
-    [SerializeField] float distanceToPlayer = 3f;
+    private bool triggered = false;
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+
     }
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        if (triggered == false)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            triggered = true;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
         TriggerDialogue();
     }
-
-    //private void Update()
-    //{
-    //    if(Physics.CheckSphere(gameObject.transform.position, distanceToPlayer, 5))
-    //    {
-    //        Debug.Log("test");
-    //        TriggerDialogue();
-    //    }
-
-    //    //if (Vector3.Distance(gameObject.transform.position, player.transform.position) < distanceToPlayer) {
-    //    //    TriggerDialogue();
-    //    //}
-    //}
 }
