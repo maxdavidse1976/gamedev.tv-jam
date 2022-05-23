@@ -13,9 +13,12 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    private Player player;
+
     void Start()
     {
         sentences = new Queue<string>();
+        player = FindObjectOfType<Player>().GetComponent<Player>();
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -32,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayNextSentence();
+        player.enabled = false;
     }
 
 
@@ -61,5 +65,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        player.enabled = true;
     }
 }
