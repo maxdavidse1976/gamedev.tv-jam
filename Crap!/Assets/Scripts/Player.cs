@@ -14,12 +14,12 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool isLanding = false;
     [SerializeField] private Transform _characterModel;
-    private Animator _animator;
+    [SerializeField] Animator _animator;
 
     private Vector3 direction;
     void Start()
     {
-        _animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -50,11 +50,11 @@ public class Player : MonoBehaviour
             }
         }
         
-        if (horizontalInput != 0)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, 0));
-            _characterModel.rotation = newRotation;
-        }
+        //if (horizontalInput != 0)
+        //{
+        //    Quaternion newRotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, 0));
+        //    //_characterModel.rotation = newRotation;
+        //}
         controller.Move(direction * Time.deltaTime);
 
     }
