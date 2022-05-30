@@ -29,14 +29,13 @@ public class Player : MonoBehaviour
         _animator.SetFloat("speed", Mathf.Abs(horizontalInput));
 
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
-
         if (isGrounded)
         {
             direction.y = 0;
             canDoubleJump = true;
             if (Input.GetButtonDown("Jump"))
             {
-                _animator.SetBool("isJumping", true);
+                //_animator.SetBool("isJumping", true);
                 direction.y = jumpStrength;
             }
         }
